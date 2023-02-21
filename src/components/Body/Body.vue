@@ -5,7 +5,7 @@
       <ManageTaskButton content="Edit Task"></ManageTaskButton>
       <ManageTaskButton content="Remove Task"></ManageTaskButton>
     </div>
-    <Tasks :tasks="tasks" @delete-task ="deleteTask"></Tasks>
+    <Tasks :tasks="tasks" @delete-task ="deleteTask" @toggle-reminder="toggleReminder"></Tasks>
   </div>
 </template>
 
@@ -20,7 +20,11 @@ export default {
   methods:{
     deleteTask(id){
       this.$emit('delete-task',id);
+    },
+    toggleReminder(id){
+      this.$emit('toggle-reminder',id)
     }
+
   }
 };
 </script>

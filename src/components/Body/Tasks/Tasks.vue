@@ -2,7 +2,7 @@
   <div :key="task.id" v-for="task in tasks">
     <div :class="[task.reminder == true ? 'reminder' : 'task']">
       <div class="task_item">
-        <p>{{ task.content }}</p>
+        <p @click="$emit('toggle-reminder',task.id)">{{ task.content }}</p>
       </div>
       <div class="task_action">
         <button @click="$emit('delete-task',task.id)">Delete</button>
@@ -17,8 +17,13 @@ export default {
   props: {
     tasks: Array,
   },
+  methods:{
+    alertFunc(){
+      alert('jio')
+    }
+  },
   emits:
-    ['delete-task']
+    ['delete-task','toggle-reminder']
 
 };
 </script>
