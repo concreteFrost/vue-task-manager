@@ -1,0 +1,34 @@
+
+@mixin taks_template($col){
+    background-color: $col;
+    border: 1px ridge;
+    border-radius: 5px;
+    font-weight: bolder;
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+
+}
+.task{
+  @include taks_template(gray)
+}
+
+.reminder{
+    @include taks_template(rgb(179, 106, 106))
+}
+
+.task_item{
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 20px;
+}
+
+.task_action{
+    grid-column: 3;
+    grid-row: 1;
+    align-self: center; /* updated */
+    margin-right: 20px;
+    
+}
+

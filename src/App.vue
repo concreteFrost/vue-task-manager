@@ -1,26 +1,50 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <Header title="Task Tracker v 1.0"></Header>
+    <Body :tasks="tasks" @delete-task ="deleteTask" ></Body>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header/Header.vue";
+import Body from "./components/Body/Body.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Body,
+  },
+  data() {
+    return { tasks: Object };
+  },
+  methods:{
+    deleteTask(id){
+      this.tasks = this.tasks.filter((e)=>e.id !== id)
+    }
+  },
+  created() {
+    this.tasks = [
+      {
+        id: 0,
+        content: "Play Guitars",
+        reminder:true,
+      },
+      {
+        id:1,
+        content: "Eat Food",
+        reminder: false
+      },
+      {
+        id:2,
+        content: "Go to Bed",
+        reminder:true
+      },
+    ];
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang="scss">
+@import "./App.module.scss";
 </style>
